@@ -25,9 +25,10 @@
         </tbody>
     </table>
 
-    <a href="/artists/create" class="btn btn-primary">Make new</a>
+    
 
  @else
     <p>No entries found in database</p>
     @endif
+    <a href="/artists/create" class="btn btn-primary">Make new</a>
 @endsection

@@ -17,7 +17,7 @@ class ArtistController extends Controller
                 'title' => 'Artists',
                 'items' => $items
             ]
-        )
+            );
     }
 
     public function create()
@@ -25,9 +25,9 @@ class ArtistController extends Controller
         return view(
             'artist.form',
             [
-                'title' => 'Add new artist'
+                'title' => 'Add new artist',
                 'artist' => new Artist()
-                ]
+            ]
             );
         }
 
