@@ -26,6 +26,7 @@ class ArtistController extends Controller
             'artist.form',
             [
                 'title' => 'Add new artist'
+                'artist' => new Artist()
                 ]
             );
         }
@@ -40,5 +41,37 @@ class ArtistController extends Controller
             $artist->save();
             return redirect('/artist');
         }
+
+        public function update(Artist $artist)
+        {
+            return view(
+                'artist.form',
+                [
+                    'title' => 'Edit artist',
+                    'artist' => $artist
+                    ]
+                );
+            }
+
+
+        public function patch(Artist $artist, Request $request)
+        {
+            $validatedData = $request->validate(
+                [
+                    'name' => 'required',
+                ]
+            );
+            $artist->name = $validatedData['name'];
+            $artist->save();
+
+            return redirect('/artists');
+        }
+
+        public function delete(Artist $artist)
+        {
+            $artist->delete();
+            return redirect('/artists');
+        }
+            
 
 }

@@ -4,15 +4,18 @@
  @if ($errors->any())
  <div class="alert alert-danger">Please fix the errors! </div>
  @endif
- <form method="post" action="/authors/put">
+ <form method="post" action="{{ $artist->exists ? '/artists/patch/' . $artist->id : '/artists/put' }}">
  @csrf
  <div class="mb-3">
- <label for="author-name" class="form-label">Author name</label>
+ <label for="artist-name" class="form-label">Artist name</label>
+
  <input
  type="text"
  class="form-control @error('name') is-invalid @enderror"
- id="author-name"
- name="name">
+ id="artist-name"
+ name="name"
+ value="{{ old('name', $artist->name) }}">
+
  @error('name')
  <p class="invalid-feedback">{{ $errors->first('name') }}</p>
  @enderror

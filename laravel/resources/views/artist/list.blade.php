@@ -11,11 +11,15 @@
         </tr>
     </thead>
     <tbody>
-        @foreach($items as $author)
+        @foreach($items as $artist)
         <tr>
-            <td>{{ $author->id }}</td>
-            <td>{{ $author->name }}</td>
-            <td>Edit / Delete</td>
+            <td>{{ $artist->id }}</td>
+            <td>{{ $artist->name }}</td>
+            <td><a href="/artists/update/{{ $artist->id }}" class="btn btn-outline-primary btnsm">Edit</a>
+ / <form action="/artists/delete/{{ $artist->id }}" method="post" class="deletionform d-inline">
+ @csrf
+ <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
+</form></td>
         </tr>
         @endforeach
         </tbody>
