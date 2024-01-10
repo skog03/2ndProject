@@ -19,4 +19,26 @@ class ArtistController extends Controller
             ]
         )
     }
+
+    public function create()
+    {
+        return view(
+            'artist.form',
+            [
+                'title' => 'Add new artist'
+                ]
+            );
+        }
+
+        public function put(Request $request)
+        {
+            $validatedData = $request->validate([
+                'name' => 'required',
+            ]);
+            $artist = new Artist();
+            $artist->name = $validatedData['name'];
+            $artist->save();
+            return redirect('/artist');
+        }
+
 }

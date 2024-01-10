@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\ArtistController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -18,4 +18,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/authors', [AuthorController::class, 'list']);
+Route::get('/artists', [ArtistController::class, 'list']);
+Route::get('/artists/create', [ArtistController::class, 'create']);
+Route::post('/artists/put', [ArtistController::class, 'put']);
