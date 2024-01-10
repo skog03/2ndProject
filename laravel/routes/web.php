@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ArtistController;
+use App\Http\Controllers\AlbumController;
+
 use Illuminate\Support\Facades\Route;
 
 
@@ -27,4 +29,10 @@ Route::post('/artists/patch/{artist}', [ArtistController::class, 'patch']);
 
 Route::post('/artists/delete/{artist}', [ArtistController::class, 'delete']);
 
-
+// Album routes
+Route::get('/albums', [AlbumController::class, 'list']);
+Route::get('/albums/create', [AlbumController::class, 'create']);
+Route::post('/albums/put', [AlbumController::class, 'put']);
+Route::get('/albums/update/{album}', [AlbumController::class, 'update']);
+Route::post('/albums/patch/{album}', [AlbumController::class, 'patch']);
+Route::post('/albums/delete/{album}', [AlbumController::class, 'delete']);
