@@ -29,6 +29,9 @@ class AlbumController extends Controller
         'artists' => $artists,
         ]
         );
+        header("Location: http://www.localhost/artists"); 
+        exit;
+
     }
 
     public function put(Request $request)
