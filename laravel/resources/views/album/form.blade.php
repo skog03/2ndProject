@@ -6,7 +6,9 @@
 @endif
 <form
  method="post"
- action="{{ $album->exists ? '/albums/patch/' . $booalbumk->id : '/albums/put' }}">
+ action="{{ $album->exists ? '/albums/patch/' . $album->id : '/albums/put' }}"
+ enctype="multipart/form-data"
+ >
  @csrf
  <div class="mb-3">
  <label for="album-name" class="form-label">Name</label>
@@ -16,6 +18,7 @@
  name="name"
  value="{{ old('name', $album->name) }}"
  class="form-control @error('name') is-invalid @enderror"
+
  >
  @error('name')
  <p class="invalid-feedback">{{ $errors->first('name') }}</p>
@@ -32,8 +35,7 @@
  @foreach($artists as $artist)
  <option
  value="{{ $artist->id }}"
- @if ($artist->id == old('artist_id', $album->artist-
->id ?? false)) selected @endif
+ @if ($artist->id == old('artist_id', $album->artist->id ?? false)) selected @endif
  >{{ $artist->name }}</option>
  @endforeach
  </select>
@@ -78,8 +80,30 @@
  <p class="invalid-feedback">{{ $errors->first('price') }}</p>
  @enderror
  </div>
- // image
+ 
+
+
  <div class="mb-3">
+ <label for="album-image" class="form-label">Image</label>
+ @if ($album->image)
+ <img
+ src="{{ asset('images/' . $album->image) }}"
+ class="img-fluid img-thumbnail d-block mb-2"
+ alt="{{ $album->name }}"
+ >
+ @endif
+ <input
+ type="file" accept="image/png, image/webp, image/jpeg"
+ id="album-image"
+ name="image"
+ class="form-control @error('image') is-invalid @enderror"
+ >
+ @error('image')
+ <p class="invalid-feedback">{{ $errors->first('image') }}</p>
+ @enderror
+</div>
+
+<div class="mb-3">
  <div class="form-check">
  <input
  type="checkbox"
@@ -92,9 +116,8 @@
  <label class="form-check-label" for="album-display">
  Publish
  </label>
- @error('display')
- <p class="invalid-feedback">{{ $errors->first('display') }}</p>
- @enderror
+
+ 
  </div>
  </div>
  <button type="submit" class="btn btn-primary">
