@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Album;
+use App\Http\Controllers\Artist;
 
 class AlbumController extends Controller
 {
@@ -29,8 +30,6 @@ class AlbumController extends Controller
         'artists' => $artists,
         ]
         );
-        header("Location: http://www.localhost/artists"); 
-        exit;
 
     }
 
