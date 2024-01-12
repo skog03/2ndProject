@@ -39,7 +39,7 @@ class ArtistController extends Controller
             $artist = new Artist();
             $artist->name = $validatedData['name'];
             $artist->save();
-            return redirect('/artist');
+            return redirect('/artists');
         }
 
         public function update(Artist $artist)

@@ -31,6 +31,9 @@
  <a class="nav-link" href="/albums">Albums</a>
  </li>
  <li class="nav-item">
+ <a class="nav-link" href="/genres">Genres</a>
+ </li>
+ <li class="nav-item">
  <a class="nav-link" href="/logout">Log out</a>
  </li>
 @else
