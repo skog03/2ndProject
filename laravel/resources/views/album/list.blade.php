@@ -8,6 +8,7 @@
  <th>ID</th>
  <th>Name</th>
  <th>Artist</th>
+ <th>Genre</th>
  <th>Year</th>
  <th>Price</th>
  <th>Published</th>
@@ -20,6 +21,7 @@
  <td>{{ $album->id }}</td>
  <td>{{ $album->name }}</td>
  <td>{{ $album->artist->name }}</td>
+ <td>{{ $album->genre->name }}</td>
  <td>{{ $album->year }}</td>
  <td>&euro; {{ number_format($album->price, 2, '.') }}</td>
  

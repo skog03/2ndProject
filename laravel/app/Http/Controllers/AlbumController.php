@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Album;
 use App\Models\Artist;
+use App\Models\Genre;
 use App\Http\Requests\AlbumRequests;
 
 class AlbumController extends Controller
@@ -44,12 +45,14 @@ class AlbumController extends Controller
     public function create()
     {
         $artists = Artist::orderBy('name', 'asc')->get();
+        $genres = Genre::orderBy('name', 'asc')->get();
         return view(
         'album.form',
         [
         'title' => 'Add album',
         'album' => new Album(),
         'artists' => $artists,
+        'genres' => $genres,
         ]
         );
 
@@ -67,12 +70,14 @@ class AlbumController extends Controller
     public function update(Album $album)
 {
  $artists = Artist::orderBy('name', 'asc')->get();
+ $genres = Genre::orderBy('name', 'asc')->get();
  return view(
  'album.form',
  [
  'title' => 'Edit album',
  'album' => $album,
  'artists' => $artists,
+ 'genres' => $genres,
  ]
  );
 }

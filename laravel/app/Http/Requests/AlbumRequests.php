@@ -16,6 +16,7 @@ class AlbumRequests extends FormRequest
         return [
             'name' => 'required|min:3|max:256',
             'artist_id' => 'required',
+            'genre_id' => 'required',
             'description' => 'nullable',
             'price' => 'nullable|numeric',
             'year' => 'numeric',
@@ -42,6 +43,7 @@ class AlbumRequests extends FormRequest
         return [
             'name' => 'nosaukums',
             'author_id' => 'autors',
+            'genre_id' => 'žandrs',
             'description' => 'apraksts',
             'price' => 'cena',
             'year' => 'gads',

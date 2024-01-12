@@ -71,4 +71,8 @@ public function delete(Genre $genre)
 }
 
  
+public function __construct()
+{
+ $this->middleware('auth');
+}
 }

@@ -15,7 +15,7 @@
  <tr>
  <td>{{ $genre->id }}</td>
  <td>{{ $genre->name }}</td>
- <td> <a href="/artists/update/{{ $artist->id }}" class="btn btn-outline-primary btnsm">Edit</a>
+ <td> <a href="/genres/update/{{ $genre->id }}" class="btn btn-outline-primary btnsm">Edit</a>
   / 
   <form action="/genres/delete/{{ $genre->id }}" method="post" class="deletionform d-inline">
  @csrf
