@@ -5,6 +5,7 @@ use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GenreController;
+use App\Http\Controllers\DataController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -54,5 +55,10 @@ Route::post('/genres/patch/{genre}', [GenreController::class, 'patch']);
 
 Route::post('/genres/delete/{genre}', [GenreController::class, 'delete']);
 
-
+// Data routes
+Route::prefix('data')->group(function () {
+    Route::get('/get-top-albums', [DataController::class, 'getTopAlbums']);
+    Route::get('/get-album/{album}', [DataController::class, 'getAlbum']);
+    Route::get('/get-related-albums/{album}', [DataController::class, 'getRelatedAlbums']);
+   });
 

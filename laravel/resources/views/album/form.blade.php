@@ -125,6 +125,23 @@
  @enderror
 </div>
 
+<div class="mb-3">
+ <div class="form-check">
+ <input
+ type="checkbox"
+ id="album-display"
+ name="display"
+ value="1"
+ class="form-check-input @error('display') is-invalid @enderror"
+ @if (old('display', $album->display)) checked @endif
+ >
+ <label class="form-check-label" for="album-display">
+ Publish
+ </label>
+ @error('display')
+ <p class="invalid-feedback">{{ $errors->first('display') }}</p>
+ @enderror
+
 
  </div>
  </div>
