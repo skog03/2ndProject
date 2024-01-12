@@ -73,5 +73,8 @@ class ArtistController extends Controller
             return redirect('/artists');
         }
             
-
+        public function __construct()
+{
+ $this->middleware('auth');
+}
 }

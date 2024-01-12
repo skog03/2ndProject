@@ -5,9 +5,31 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Album;
 use App\Models\Artist;
+use App\Http\Requests\AlbumRequests;
 
 class AlbumController extends Controller
 {
+    private function saveAlbumData(Album $album, AlbumRequests $request)
+{
+ $validatedData = $request->validated();
+
+ $album->fill($validatedData);
+ $album->display = (bool) ($validatedData['display'] ?? false);
+ 
+ 
+ if ($request->hasFile('image')) {
+ $uploadedFile = $request->file('image');
+ $extension = $uploadedFile->clientExtension();
+ $name = uniqid();
+ $album->image = $uploadedFile->storePubliclyAs(
+ '/',
+ $name . '.' . $extension,
+ 'uploads'
+ );
+ }
+ $album->save();
+}
+
     public function list()
     {
         $items = Album::orderBy('name', 'asc')->get();
@@ -33,35 +55,10 @@ class AlbumController extends Controller
 
     }
 
-    public function put(Request $request)
+    public function put(AlbumRequests $request)
     {
-        $validatedData = $request->validate([
-        'name' => 'required|min:3|max:256',
-        'artist_id' => 'required',
-        'description' => 'nullable',
-        'price' => 'nullable|numeric',
-        'year' => 'numeric',
-        'image' => 'nullable|image',
-        'display' => 'nullable'
-        ]);
         $album = new Album();
-        $album->name = $validatedData['name'];
-        $album->artist_id = $validatedData['artist_id'];
-        $album->description = $validatedData['description'];
-        $album->price = $validatedData['price'];
-        $album->year = $validatedData['year'];
-        $album->display = (bool) ($validatedData['display'] ?? false);
-        if ($request->hasFile('image')) {
-            $uploadedFile = $request->file('image');
-            $extension = $uploadedFile->clientExtension();
-            $name = uniqid();
-            $album->image = $uploadedFile->storePubliclyAs(
-            '/',
-            $name . '.' . $extension,
-            'uploads'
-            );
-           }
-        $album->save();
+        $this->saveAlbumData($album, $request);
         return redirect('/albums');
     }
 
@@ -79,35 +76,11 @@ class AlbumController extends Controller
  ]
  );
 }
-public function patch(Album $album, Request $request)
+
+public function patch(Album $album, AlbumRequests $request)
 {
- $validatedData = $request->validate([
- 'name' => 'required|min:3|max:256',
- 'artist_id' => 'required',
- 'description' => 'nullable',
- 'price' => 'nullable|numeric',
- 'year' => 'numeric',
- 'image' => 'nullable|image',
- 'display' => 'nullable'
- ]);
- $album->name = $validatedData['name'];
- $album->artist_id = $validatedData['artist_id'];
- $album->description = $validatedData['description'];
- $album->price = $validatedData['price'];
- $album->year = $validatedData['year'];
- $album->display = (bool) ($validatedData['display'] ?? false);
- if ($request->hasFile('image')) {
-    $uploadedFile = $request->file('image');
-    $extension = $uploadedFile->clientExtension();
-    $name = uniqid();
-    $album->image = $uploadedFile->storePubliclyAs(
-    '/',
-    $name . '.' . $extension,
-    'uploads'
-    );
-   }
- $album->save();
- return redirect('/albums/update/' . $album->id);
+    $this->saveAlbumData($album, $request);
+    return redirect('/albums/update/' . $album->id);
 }
 
 
@@ -116,9 +89,9 @@ public function delete(Album $album)
  $album->delete();
  return redirect('/albums');
 }
-
-
-
-        
-
+    
+public function __construct()
+{
+ $this->middleware('auth');
+}
 }

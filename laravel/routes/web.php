@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\AlbumController;
+use App\Http\Controllers\AuthController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -36,3 +37,10 @@ Route::post('/albums/put', [AlbumController::class, 'put']);
 Route::get('/albums/update/{album}', [AlbumController::class, 'update']);
 Route::post('/albums/patch/{album}', [AlbumController::class, 'patch']);
 Route::post('/albums/delete/{album}', [AlbumController::class, 'delete']);
+
+
+
+// Auth routes
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/auth', [AuthController::class, 'authenticate']);
+Route::get('/logout', [AuthController::class, 'logout']);

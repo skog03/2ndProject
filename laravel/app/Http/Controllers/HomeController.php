@@ -13,6 +13,10 @@ public function index()
         ['title' => 'Homepage']
     );
 }
+public function __construct()
+{
+ $this->middleware('auth');
+}
     
 }
 
