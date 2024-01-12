@@ -6,7 +6,7 @@
  <thead class="thead-light">
  <tr>
  <th>ID</td>
-<th>Name</td>
+<th>Genre</td>
 <th>&nbsp;</td>
  </tr>
  </thead>

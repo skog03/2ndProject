@@ -30,6 +30,7 @@ class GenreController extends Controller
   );
  }
 
+
  public function put(Request $request)
 {
  $validatedData = $request->validate([
