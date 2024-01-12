@@ -15,7 +15,13 @@
  <tr>
  <td>{{ $genre->id }}</td>
  <td>{{ $genre->name }}</td>
- <td>Edit / Delete</td>
+ <td> <a href="/artists/update/{{ $artist->id }}" class="btn btn-outline-primary btnsm">Edit</a>
+  / 
+  <form action="/genres/delete/{{ $genre->id }}" method="post" class="deletionform d-inline">
+ @csrf
+ <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
+</form>
+</td>
  </tr>
  @endforeach
  </tbody>

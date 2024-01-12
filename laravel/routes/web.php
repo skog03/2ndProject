@@ -49,6 +49,10 @@ Route::get('/genres', [GenreController::class, 'list']);
 Route::get('/genres/create', [GenreController::class, 'create']);
 Route::post('/genres/put', [GenreController::class, 'put']);
 
+Route::get('/genres/update/{genre}', [GenreController::class, 'update']);
+Route::post('/genres/patch/{genre}', [GenreController::class, 'patch']);
+
+Route::post('/genres/delete/{genre}', [GenreController::class, 'delete']);
 
 
 

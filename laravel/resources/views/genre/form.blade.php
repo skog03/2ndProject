@@ -4,7 +4,7 @@
  @if ($errors->any())
  <div class="alert alert-danger">Please fix the errors! </div>
  @endif
- <form method="post" action="/genres/put">
+ <form method="post" action="{{ $genre->exists ? '/genres/patch/' . $genre->id : '/genres/put' }}">
  @csrf
  <div class="mb-3">
  <label for="genre-name" class="form-label">Genre name</label>
@@ -12,7 +12,9 @@
  type="text"
  class="form-control @error('name') is-invalid @enderror"
  id="genre-name"
- name="name">
+ name="name"
+ value="{{ old('name', $genre->name) }}"
+>
  @error('name')
  <p class="invalid-feedback">{{ $errors->first('name') }}</p>
  @enderror
