@@ -14,7 +14,8 @@
  class="form-control @error('name') is-invalid @enderror"
  id="artist-name"
  name="name"
- value="{{ old('name', $artist->name) }}">
+ value="{{ old('name', $artist->name) }}"
+ autofocus>
 
  @error('name')
  <p class="invalid-feedback">{{ $errors->first('name') }}</p>

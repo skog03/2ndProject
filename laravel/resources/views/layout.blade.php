@@ -14,9 +14,9 @@
 
 <body >
     
-    <nav class="navbar bg-primary mb-3" data-bs-theme="dark">
+    <nav class="navbar bg-success mb-3" data-bs-theme="dark">
         <header class="container">
-            <nav class="navbar navbar-expand-md bg-primary mb-3" data-bs-theme="dark">
+            <nav class="navbar navbar-expand-md bg-success mb-3" data-bs-theme="dark">
                 <div class="container">
                     <span class="navbar-brand mb-0 h1">Project 2</span>
 
@@ -55,7 +55,6 @@
     <main class="container">
         <div class="row">
             <div class="col" >
-                <!-- <div id="root"></div> -->
                 @yield('content')
                 
             </div>
@@ -63,11 +62,11 @@
     </main>
 
 
-    <footer class="text-bg-dark mt-3">
+    <footer class="text-bg-success text-end mt-3">
         <div class="container">
             <div class="row py-5">
                 <div class="col">
-                    A. Aumale, 2023
+                    A. Aumale, Vea, 2023
                 </div>
             </div>
         </div>

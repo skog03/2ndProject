@@ -18,6 +18,7 @@
  name="name"
  value="{{ old('name', $album->name) }}"
  class="form-control @error('name') is-invalid @enderror"
+ autofocus
 
  >
  @error('name')
