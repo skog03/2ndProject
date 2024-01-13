@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Album;
-use App\Models\Artist;
-use App\Models\Genre;
 
 class DataController extends Controller
 {

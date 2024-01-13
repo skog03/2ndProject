@@ -12,7 +12,8 @@
     <script src="/js/app.js"></script> 
 </head>
 
-<body>
+<body >
+    
     <nav class="navbar bg-primary mb-3" data-bs-theme="dark">
         <header class="container">
             <nav class="navbar navbar-expand-md bg-primary mb-3" data-bs-theme="dark">
@@ -53,8 +54,10 @@
 
     <main class="container">
         <div class="row">
-            <div class="col">
+            <div class="col" >
+                <!-- <div id="root"></div> -->
                 @yield('content')
+                
             </div>
         </div>
     </main>
@@ -70,7 +73,8 @@
         </div>
     </footer>
 
- 
+    <script src="{{ asset('/js/app.js') }}" src="{{ asset('/js/admin.js') }}"></script>
 </body>
+
 
 </html>

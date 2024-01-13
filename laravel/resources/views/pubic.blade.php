@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="eng">
+<html lang="eng" >
  <head>
  <meta charset="utf-8">
  <title>{{ $title }}</title>
@@ -21,11 +21,13 @@ crossorigin="anonymous"
  <main class="container">
  <div id="root"></div>
  </main>
+
  <footer class="mt-5 py-5">
  <div class="container">
  K. Immers, VeA, 2024
  </div>
  </footer>
- <script src="{{ asset('/js/app.js') }}"></script>
+ 
+ <script src="{{ asset('/js/app.js') }} " src="{{ asset('/js/admin.js') }}"></script>
  </body>
 </html>
