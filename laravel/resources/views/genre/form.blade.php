@@ -14,6 +14,7 @@
  id="genre-name"
  name="name"
  value="{{ old('name', $genre->name) }}"
+ autofocus
 >
  @error('name')
  <p class="invalid-feedback">{{ $errors->first('name') }}</p>
